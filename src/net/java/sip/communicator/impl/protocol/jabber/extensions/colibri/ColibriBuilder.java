@@ -201,6 +201,7 @@ public class ColibriBuilder
      * the same bundle.
      * @param endpointName name of the endpoint for which Colibri channels will
      * be allocated.
+     * @param statsId optional statistics ID for the endpoint
      * @param peerIsInitiator the value that will be set in 'initiator'
      * attribute ({@link ColibriConferenceIQ.Channel#initiator}).
      * @param contents the list of {@link ContentPacketExtension} describing
@@ -214,6 +215,7 @@ public class ColibriBuilder
     public boolean addAllocateChannelsReq(
             boolean                      useBundle,
             String                       endpointName,
+            String                       statsId,
             boolean                      peerIsInitiator,
             List<ContentPacketExtension> contents)
     {
@@ -240,11 +242,6 @@ public class ColibriBuilder
 
             remoteChannelRequest.setEndpoint(endpointName);
             remoteChannelRequest.setInitiator(peerIsInitiator);
-
-            if (useBundle)
-            {
-                remoteChannelRequest.setChannelBundleId(endpointName);
-            }
 
             if (remoteChannelRequest instanceof ColibriConferenceIQ.Channel)
             {
@@ -301,9 +298,9 @@ public class ColibriBuilder
 
         if (useBundle && contents.size() >= 1)
         {
-            // Copy first transport to bundle
-            ColibriConferenceIQ.ChannelBundle bundle
-                = new ColibriConferenceIQ.ChannelBundle(endpointName);
+            // Set the transport to the endpoint
+            ColibriConferenceIQ.Endpoint endpoint
+                = new ColibriConferenceIQ.Endpoint(endpointName, statsId, null);
 
             ContentPacketExtension firstContent = contents.get(0);
 
@@ -314,12 +311,12 @@ public class ColibriBuilder
             {
                 hasAnyChanges = true;
 
-                bundle.setTransport(
+                endpoint.setTransport(
                     IceUdpTransportPacketExtension
                         .cloneTransportAndCandidates(transport, true));
             }
 
-            request.addChannelBundle(bundle);
+            request.addEndpoint(endpoint);
         }
 
         return hasAnyChanges;
@@ -328,15 +325,15 @@ public class ColibriBuilder
     /**
      * Adds next request to {@link RequestType#CHANNEL_INFO_UPDATE} query.
      * @param localChannelsInfo the {@link ColibriConferenceIQ} instance that
-     * describes the channel for which bundle transport will be updated. It
-     * should contain the description of only one "channel bundle". If it
+     * describes the channel for which endpoint transport will be updated. It
+     * should contain the description of only one "endpoint". If it
      * contains more than one then the first one will be used.
      * @return <tt>true</tt> if the request yields any changes in Colibri
      * channels state on the bridge or <tt>false</tt> otherwise. In general when
      * <tt>false</tt> is returned for all combined requests it makes no sense
      * to send it.
      * @throws IllegalArgumentException if <tt>localChannelsInfo</tt> does not
-     * describe any channel bundles.
+     * describe any endpoints.
      */
     public boolean addBundleTransportUpdateReq(
         IceUdpTransportPacketExtension    transport,
@@ -357,39 +354,39 @@ public class ColibriBuilder
 
         request.setType(IQ.Type.SET);
 
-        // We expect single bundle
-        ColibriConferenceIQ.ChannelBundle localBundle;
-        if (localChannelsInfo.getChannelBundles().size() > 0)
+        // We expect single endpoint
+        ColibriConferenceIQ.Endpoint localEndpoint;
+        if (localChannelsInfo.getEndpoints().size() > 0)
         {
-            localBundle = localChannelsInfo.getChannelBundles().get(0);
+            localEndpoint = localChannelsInfo.getEndpoints().get(0);
 
-            if (localChannelsInfo.getChannelBundles().size() > 1)
+            if (localChannelsInfo.getEndpoints().size() > 1)
             {
-                logger.error("More than one bundle in local channels info !");
+                logger.error("More than one endpoint in local channels info !");
             }
         }
         else
         {
             throw new IllegalArgumentException(
-                    "Expected ChannelBundle was not found");
+                "Expected Endpoint was not found");
         }
 
-        ColibriConferenceIQ.ChannelBundle bundleUpdate
-            = new ColibriConferenceIQ.ChannelBundle(
-                    localBundle.getId());
+        ColibriConferenceIQ.Endpoint endpointUpdate
+            = new ColibriConferenceIQ.Endpoint(
+                localEndpoint.getId(), null, null);
 
         IceUdpTransportPacketExtension transportUpdate
             = IceUdpTransportPacketExtension
                     .cloneTransportAndCandidates(transport, true);
 
-        bundleUpdate.setTransport(transportUpdate);
+        endpointUpdate.setTransport(transportUpdate);
 
-        // Note: if the request already contains a bundle with the same ID, the
-        // OLD one is kept.
-        boolean hasAnyChanges = request.addChannelBundle(bundleUpdate);
+        // Note: if the request already contains a endpoint with the same ID,
+        // the OLD one is kept.
+        boolean hasAnyChanges = request.addEndpoint(endpointUpdate);
         if (!hasAnyChanges)
         {
-            logger.warn("A channel-bundle update has been lost (an instance "
+            logger.warn("A endpoint update has been lost (an instance "
                             + "with its ID already exists)");
         }
 
