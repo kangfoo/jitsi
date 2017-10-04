@@ -2984,6 +2984,13 @@ public class ChatRoomJabberImpl
             {
                 member.setAvatarUrl(avatarUrl.getAvatarUrl());
             }
+
+            StatsId statsId = (StatsId) presence.getExtension(
+                StatsId.ELEMENT_NAME, StatsId.NAMESPACE);
+            if (member != null && statsId != null)
+            {
+                member.setStatisticsID(statsId.getStatsId());
+            }
         }
     }
 
