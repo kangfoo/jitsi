@@ -2,7 +2,7 @@
 
 #set the path to your jvm/jni includes here
 
-JNI_INCLUDE_PATH=/usr/lib/jvm/java-6-sun-1.6.0.00/include
+JNI_INCLUDE_PATH=/root/kangfoo/java/include
 LIBS=-lasound
 
 rm -f libjmf_alsa.so

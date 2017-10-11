@@ -7,7 +7,7 @@
 
 TARGET=libjmf_alsa.so
 CFLAGS=-I$(JNI_INCLUDE_PATH) -I$(JNI_INCLUDE_PATH)/linux 
-JNI_INCLUDE_PATH=/usr/lib/jvm/java-6-sun-1.6.0.00/include
+JNI_INCLUDE_PATH=/root/kangfoo/java/include
 LIBS=-lasound
 OBJS=net_java_sip_communicator_impl_media_protocol_alsa_AlsaStream.o
 
