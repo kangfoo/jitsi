@@ -41,3 +41,9 @@ http://bbs.csdn.net/topics/390175774/
 -Djava.library.path=/home/kangfoo/work/chinamobile/jitsi/lib/native/linux-64
 
 $PATH:/home/kangfoo/work/chinamobile/jitsi/lib/native/linux-64
+
+## 重要调用链
+
+1. impl.protocol.sip.ProtocolProviderServiceSipImpl.run().1184 Killing the SIP Protocol Provider.
+
+1. impl.protocol.sip.OperationSetBasicTelephonySipImpl.shutdown().1982 Ending all active calls.
