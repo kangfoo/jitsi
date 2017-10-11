@@ -29,7 +29,7 @@ import net.java.sip.communicator.plugin.desktoputil.*;
 /**
  * The panel containing all account related information like user name and
  * password.
- *
+ * 账户面板
  * @author Yana Stamcheva
  */
 public class AccountPanel

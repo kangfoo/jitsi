@@ -121,6 +121,7 @@ public class UIServiceImpl
 
     private MainFrame mainFrame;
 
+    // ####
     private LoginManager loginManager;
 
     private final ChatWindowManager chatWindowManager

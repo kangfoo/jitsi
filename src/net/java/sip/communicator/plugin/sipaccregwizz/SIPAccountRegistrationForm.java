@@ -31,7 +31,7 @@ import org.jitsi.util.*;
 
 /**
  * The <tt>SIPAccountRegistrationForm</tt>.
- *
+ * 账号注册向导
  * @author Yana Stamcheva
  * @author Grogorii Balutsel
  * @author Pawel Domas
@@ -150,6 +150,7 @@ public class SIPAccountRegistrationForm
      * Enables/disables the next/finish button of the parent wizard.
      * @param isEnabled <tt>true</tt> to enable the next button, <tt>false</tt>
      * otherwise
+     *  下一步
      */
     private void setNextFinishButtonEnabled(boolean isEnabled)
     {
@@ -215,7 +216,7 @@ public class SIPAccountRegistrationForm
 
     /**
      * Saves the user input when the "Next" wizard buttons is clicked.
-     *
+     * 提交按钮
      * @param registration the SIPAccountRegistration
      * @return
      */

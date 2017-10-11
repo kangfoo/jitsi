@@ -24,7 +24,7 @@ import org.jitsi.service.resources.*;
 /**
  * The <tt>Resources</tt> class manages the access to the internationalization
  * properties files and the image resources used in this plugin.
- *
+ * SIP 图标
  * @author Yana Stamcheva
  */
 public class Resources

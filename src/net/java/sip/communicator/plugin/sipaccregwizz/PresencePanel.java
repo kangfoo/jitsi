@@ -28,7 +28,7 @@ import net.java.sip.communicator.service.protocol.sip.*;
 
 /**
  * The <tt>PresencePanel</tt> is the one containing presence information.
- *
+ * 在线信息
  * @author Yana Stamcheva
  * @author Grigorii Balutsel
  * @author Damian Minkov
@@ -58,6 +58,7 @@ public class PresencePanel
 
     private final JCheckBox forceP2PPresOpButton;
 
+//    离线联系人拉取间隔(单位：秒)
     private JLabel pollPeriodLabel = new JLabel(
             Resources.getString(
                     "plugin.sipaccregwizz.OFFLINE_CONTACT_POLLING_PERIOD"));

@@ -19,6 +19,7 @@ package net.java.sip.communicator.plugin.sipaccregwizz;
 
 /**
  * @author Yana Stamcheva
+ *  ###############
  */
 public class NewAccount
 {

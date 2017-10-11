@@ -1,0 +1,261 @@
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/AccountPanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/AccountPanel.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/AccountPanel.java	(revision )
+@@ -29,7 +29,7 @@
+ /**
+  * The panel containing all account related information like user name and
+  * password.
+- *
++ * 账户面板
+  * @author Yana Stamcheva
+  */
+ public class AccountPanel
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccountRegistrationWizard.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccountRegistrationWizard.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccountRegistrationWizard.java	(revision )
+@@ -69,7 +69,7 @@
+     public SIPAccountRegistrationWizard(WizardContainer wizardContainer)
+     {
+         setWizardContainer(wizardContainer);
+-
++        // 登录
+         wizardContainer.setFinishButtonText(
+             Resources.getString("service.gui.SIGN_IN"));
+     }
+Index: src/net/java/sip/communicator/plugin/simpleaccreg/InitialAccountRegistrationFrame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/simpleaccreg/InitialAccountRegistrationFrame.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/simpleaccreg/InitialAccountRegistrationFrame.java	(revision )
+@@ -554,6 +554,7 @@
+     }
+ 
+     /**
++     * 登录
+      * Handles the event triggered by the "service.gui.SIGN_IN" button.
+      */
+     private class SigninActionListener implements ActionListener
+Index: src/net/java/sip/communicator/impl/gui/UIServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/impl/gui/UIServiceImpl.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/impl/gui/UIServiceImpl.java	(revision )
+@@ -121,6 +121,7 @@
+ 
+     private MainFrame mainFrame;
+ 
++    // ####
+     private LoginManager loginManager;
+ 
+     private final ChatWindowManager chatWindowManager
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/ConnectionPanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/ConnectionPanel.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/ConnectionPanel.java	(revision )
+@@ -32,7 +32,7 @@
+ 
+ /**
+  * The panel containing information about the connection.
+- *
++ * 连接协议面板
+  * @author Yana Stamcheva
+  * @author Pawel Domas
+  */
+Index: src/net/java/sip/communicator/service/protocol/sip/SIPAccountRegistration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/service/protocol/sip/SIPAccountRegistration.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/service/protocol/sip/SIPAccountRegistration.java	(revision )
+@@ -35,6 +35,8 @@
+  * @author Grigorii Balutsel
+  * @author Boris Grozev
+  * @author Pawel Domas
++ *
++ * #### sip 协议model
+  */
+ public class SIPAccountRegistration
+     extends SipAccountID
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/Resources.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/Resources.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/Resources.java	(revision )
+@@ -24,7 +24,7 @@
+ /**
+  * The <tt>Resources</tt> class manages the access to the internationalization
+  * properties files and the image resources used in this plugin.
+- *
++ * SIP 图标
+  * @author Yana Stamcheva
+  */
+ public class Resources
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/PresencePanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/PresencePanel.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/PresencePanel.java	(revision )
+@@ -28,7 +28,7 @@
+ 
+ /**
+  * The <tt>PresencePanel</tt> is the one containing presence information.
+- *
++ * 在线信息
+  * @author Yana Stamcheva
+  * @author Grigorii Balutsel
+  * @author Damian Minkov
+@@ -58,6 +58,7 @@
+ 
+     private final JCheckBox forceP2PPresOpButton;
+ 
++//    离线联系人拉取间隔(单位：秒)
+     private JLabel pollPeriodLabel = new JLabel(
+             Resources.getString(
+                     "plugin.sipaccregwizz.OFFLINE_CONTACT_POLLING_PERIOD"));
+Index: resources/languages/resources_zh_CN.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- resources/languages/resources_zh_CN.properties	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ resources/languages/resources_zh_CN.properties	(revision )
+@@ -1059,6 +1059,7 @@
+ plugin.simpleaccregwizz.SPECIAL_SIGNUP=未注册?-点击这里获取用户名
+ 
+ # sipaccregwizz
++# ################### ################### ##################
+ plugin.sipaccregwizz.PROTOCOL_NAME=SIP
+ plugin.sipaccregwizz.PROTOCOL_DESCRIPTION=SIP协议
+ plugin.sipaccregwizz.USERNAME=SIP ID
+@@ -1091,6 +1092,7 @@
+ plugin.sipaccregwizz.DTMF_INBAND=带内
+ plugin.sipaccregwizz.ENABLE_DEFAULT_ENCRYPTION=启用加密通话支持
+ plugin.sipaccregwizz.ENABLE_SIPZRTP_ATTRIBUTE=表示支持ZRTP的信令协议
++#
+ plugin.sipaccregwizz.AUTH_NAME=授权名称
+ plugin.sipaccregwizz.DISPLAY_NAME=显示名称
+ plugin.sipaccregwizz.EXISTING_ACCOUNT=已添加的SIP账号
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccountRegistrationForm.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccountRegistrationForm.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccountRegistrationForm.java	(revision )
+@@ -31,7 +31,7 @@
+ 
+ /**
+  * The <tt>SIPAccountRegistrationForm</tt>.
+- *
++ * 账号注册向导
+  * @author Yana Stamcheva
+  * @author Grogorii Balutsel
+  * @author Pawel Domas
+@@ -150,6 +150,7 @@
+      * Enables/disables the next/finish button of the parent wizard.
+      * @param isEnabled <tt>true</tt> to enable the next button, <tt>false</tt>
+      * otherwise
++     *  下一步
+      */
+     private void setNextFinishButtonEnabled(boolean isEnabled)
+     {
+@@ -215,7 +216,7 @@
+ 
+     /**
+      * Saves the user input when the "Next" wizard buttons is clicked.
+-     *
++     * 提交按钮
+      * @param registration the SIPAccountRegistration
+      * @return
+      */
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- README.md	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ README.md	(revision )
+@@ -16,3 +16,19 @@
+ Contributing
+ ------------
+ Please, read the [contribution guidelines](CONTRIBUTING.md) before opening a new issue or pull request.
++
++
++http://www.chongchonggou.com/g_55925511.html
++
++https://desktop.jitsi.org/Documentation/FAQ#sip-force-message
++
++https://desktop.jitsi.org/Documentation/ConfigureEclipseNew
++
++# how-to-setup-eclipse-for-using-jitsi-from-github-on-linux
++https://stackoverflow.com/questions/26533629/how-to-setup-eclipse-for-using-jitsi-from-github-on-linux
++
++https://stackoverflow.com/questions/26533629/how-to-setup-eclipse-for-using-jitsi-from-github-on-linux%E2%80%8B
++
++# ALSA lib confmisc.c:768:(parse_card) cannot find card '0'
++
++http://bbs.csdn.net/topics/390175774/
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccRegWizzActivator.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccRegWizzActivator.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/SIPAccRegWizzActivator.java	(revision )
+@@ -30,7 +30,7 @@
+ 
+ /**
+  * Registers the <tt>SIPAccountRegistrationWizard</tt> in the UI Service.
+- *
++ * ##########
+  * @author Yana Stamcheva
+  */
+ public class SIPAccRegWizzActivator
+@@ -65,10 +65,12 @@
+     @Override
+     public void start(Object dependentService)
+     {
++        // 重点对象
+         uiService = (UIService)dependentService;
+ 
+         wizardContainer = uiService.getAccountRegWizardContainer();
+ 
++        // sip 向导
+         sipWizard = new SIPAccountRegistrationWizard(wizardContainer);
+ 
+         Hashtable<String, String> containerFilter
+Index: src/net/java/sip/communicator/plugin/sipaccregwizz/NewAccount.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/net/java/sip/communicator/plugin/sipaccregwizz/NewAccount.java	(revision 37b9d3028ef54442211ebedce2ee44c70cf99a69)
++++ src/net/java/sip/communicator/plugin/sipaccregwizz/NewAccount.java	(revision )
+@@ -19,6 +19,7 @@
+ 
+ /**
+  * @author Yana Stamcheva
++ *  ###############
+  */
+ public class NewAccount
+ {

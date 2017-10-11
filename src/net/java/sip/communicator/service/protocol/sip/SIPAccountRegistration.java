@@ -35,6 +35,8 @@ import org.osgi.framework.*;
  * @author Grigorii Balutsel
  * @author Boris Grozev
  * @author Pawel Domas
+ *
+ * #### sip 协议model
  */
 public class SIPAccountRegistration
     extends SipAccountID

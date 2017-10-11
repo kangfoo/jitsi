@@ -30,7 +30,7 @@ import org.osgi.framework.*;
 
 /**
  * Registers the <tt>SIPAccountRegistrationWizard</tt> in the UI Service.
- *
+ * ##########
  * @author Yana Stamcheva
  */
 public class SIPAccRegWizzActivator
@@ -65,10 +65,12 @@ public class SIPAccRegWizzActivator
     @Override
     public void start(Object dependentService)
     {
+        // 重点对象
         uiService = (UIService)dependentService;
 
         wizardContainer = uiService.getAccountRegWizardContainer();
 
+        // sip 向导
         sipWizard = new SIPAccountRegistrationWizard(wizardContainer);
 
         Hashtable<String, String> containerFilter

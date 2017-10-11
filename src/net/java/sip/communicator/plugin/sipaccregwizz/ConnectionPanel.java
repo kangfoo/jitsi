@@ -32,7 +32,7 @@ import org.jitsi.util.*;
 
 /**
  * The panel containing information about the connection.
- *
+ * 连接协议面板
  * @author Yana Stamcheva
  * @author Pawel Domas
  */

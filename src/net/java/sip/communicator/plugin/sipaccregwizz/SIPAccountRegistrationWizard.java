@@ -69,7 +69,7 @@ public class SIPAccountRegistrationWizard
     public SIPAccountRegistrationWizard(WizardContainer wizardContainer)
     {
         setWizardContainer(wizardContainer);
-
+        // 登录
         wizardContainer.setFinishButtonText(
             Resources.getString("service.gui.SIGN_IN"));
     }

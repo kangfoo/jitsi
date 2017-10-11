@@ -554,6 +554,7 @@ public class InitialAccountRegistrationFrame
     }
 
     /**
+     * 登录
      * Handles the event triggered by the "service.gui.SIGN_IN" button.
      */
     private class SigninActionListener implements ActionListener
